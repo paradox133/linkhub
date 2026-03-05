@@ -1,0 +1,20 @@
+name: linkhub
+
+services:
+  backend:
+    build: ./backend
+    container_name: linkhub-backend
+    ports: ["3088:3088"]
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3088
+      - TZ=America/New_York
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    container_name: linkhub-frontend
+    ports: ["8273:80"]
+    depends_on: [backend]
+    restart: unless-stopped
