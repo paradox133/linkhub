@@ -2,6 +2,7 @@ name: linkhub
 
 services:
   backend:
+    image: linkhub-backend
     build: ./backend
     container_name: linkhub-backend
     ports: ["3088:3088"]
@@ -13,6 +14,7 @@ services:
       - TZ=America/New_York
     restart: unless-stopped
   frontend:
+    image: linkhub-frontend
     build: ./frontend
     container_name: linkhub-frontend
     ports: ["8273:80"]
